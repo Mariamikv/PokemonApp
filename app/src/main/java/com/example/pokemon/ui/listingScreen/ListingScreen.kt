@@ -63,7 +63,7 @@ fun PokemonList(
     ) {
         val itemCount = pokemonList.size
         items(itemCount) {
-            if (it >= itemCount - 1 && !isLoading) {
+            if (it >= itemCount - 1 && !endReached && !isLoading) {
                 viewModel.loadPagination()
             }
 

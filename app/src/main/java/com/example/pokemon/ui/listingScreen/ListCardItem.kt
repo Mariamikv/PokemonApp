@@ -31,15 +31,9 @@ fun ListCardItem(
     viewModel: PokemonViewModel = hiltViewModel()
 ) {
     val defaultDominantColor = MaterialTheme.colors.surface
-    var pokemonColor by remember {
-        mutableStateOf(defaultDominantColor)
-    }
-
+    var pokemonColor by remember { mutableStateOf(defaultDominantColor) }
     val showDialog =  remember { mutableStateOf(false) }
-
-    var pokemonImage by remember {
-        mutableStateOf("")
-    }
+    var pokemonImage by remember { mutableStateOf("") }
 
     if(showDialog.value)
         AppDialog(
@@ -57,10 +51,8 @@ fun ListCardItem(
         modifier = Modifier.fillMaxWidth(),
         elevation = 8.dp,
         backgroundColor = pokemonColor
-
     ) {
         Row {
-
             SubcomposeAsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(entry.imageUrl)
@@ -88,7 +80,6 @@ fun ListCardItem(
                         showDialog.value = true
                     }
             )
-
             Column {
                 Text(
                     text = entry.pokemonName.replaceFirstChar {
@@ -103,9 +94,7 @@ fun ListCardItem(
                         .padding(start = 50.dp, top = 30.dp),
                     color = CardTextColor
                 )
-
                 Spacer(modifier = Modifier.height(16.dp))
-
                 AnimatedButton(
                     modifier = Modifier
                         .padding(start = 100.dp, top = 10.dp)
